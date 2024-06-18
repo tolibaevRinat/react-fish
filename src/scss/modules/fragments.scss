@@ -1,0 +1,26 @@
+body {
+  font-family: $fontFamily, Arial, Helvetica, sans-serif;
+  color: $color;
+  background-color: $backgroundColor;
+  @include adaptiveValue(font-size, 16, 14, $maxWidthContainer, 320);
+}
+.wrapper {
+  max-width: toRem($maxWidthLayout);
+  margin: 0 auto;
+}
+
+.gap-14 {
+  gap: toRem(14);
+}
+.title {
+  font-weight: 700;
+  font-size: toRem(30);
+  @media (min-width: toEm($mobile)) {
+    font-size: toRem(40);
+  }
+  @media (min-width: toEm(1440.98)) {
+    font-size: toRem(60);
+  }
+
+  color: rgb(243, 246, 250);
+}

@@ -1,0 +1,43 @@
+@import '../../scss/modules/vars';
+@import '../../scss/modules/functions';
+@import '../../scss/modules/mixins';
+
+.advantages {
+  @media (min-width: toEm($mobileSmall)) {
+    margin-bottom: toRem(80);
+  }
+  margin-bottom: toRem(44);
+}
+.title {
+  margin-bottom: toRem(20);
+}
+.item {
+  border-radius: toRem(20);
+  background-color: rgb(36, 76, 112);
+
+  padding: toRem(20);
+
+  text-align: center;
+}
+.subtitle {
+  color: $white;
+  margin-bottom: toRem(10);
+  font-size: toRem(20);
+}
+.text {
+  @media (min-width: toEm($mobile)) {
+    font-size: toRem(20);
+  }
+  font-size: toRem(18);
+  line-height: calc(23 / 20);
+}
+.list {
+  display: grid;
+
+  @media (min-width: toEm($mobile)) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  @media (min-width: toEm(1024.98)) {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}

@@ -1,0 +1,50 @@
+@import './reset';
+@import './fonts';
+
+//=============================================================================================================================================
+@import './vars';
+
+@import './mixins';
+@import './functions';
+
+@import './classses';
+//=============================================================================================================================================
+
+@import './containers';
+
+@import './base';
+@import './fragments';
+
+.items {
+  @media (min-width: toEm($mobileSmall)) {
+    margin-bottom: toRem(100);
+  }
+  margin-bottom: toRem(50);
+  &__title {
+    margin-bottom: toRem(20);
+  }
+  &__list {
+    grid-template-columns: 1fr;
+    @media (min-width: toEm($mobile)) {
+      grid-template-columns: repeat(2, 1fr);
+    }
+    @media (min-width: toEm($tablet)) {
+      grid-template-columns: repeat(3, 1fr);
+    }
+    @media (min-width: toEm(1250.98)) {
+      grid-template-columns: repeat(4, 1fr);
+    }
+    align-content: stretch;
+  }
+  &__bg {
+    position: absolute;
+    top: 0;
+
+    top: toRem(-40);
+    left: toRem(-645);
+    @media (min-width: toEm($tablet)) {
+      left: toRem(-280);
+      top: toRem(-102);
+    }
+  }
+}

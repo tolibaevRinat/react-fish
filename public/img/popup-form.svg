@@ -1,0 +1,26 @@
+<svg width="1300.000000" height="766.000000" viewBox="0 0 1300 766" fill="none" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+	<desc>
+			Created with Pixso.
+	</desc>
+	<defs>
+		<clipPath id="clip408_1466">
+			<rect id="Basket" rx="20.000000" width="1300.000000" height="766.000000" fill="white" fill-opacity="0"/>
+		</clipPath>
+		<linearGradient x1="598.500000" y1="521.000122" x2="83.499969" y2="249.000153" id="paint_linear_408_1468_0" gradientUnits="userSpaceOnUse">
+			<stop stop-color="#FFCA10"/>
+			<stop offset="1.000000" stop-color="#FFFFFF"/>
+		</linearGradient>
+	</defs>
+	<rect id="Basket" rx="20.000000" width="1300.000000" height="766.000000" fill="#173454" fill-opacity="1.000000"/>
+	<g clip-path="url(#clip408_1466)">
+		<path id="Vector 24" d="M952.56 237.5C1105.18 139.5 1232.56 260.5 1346.07 308.5C1459.57 356.5 1587.39 873.57 1502.89 876.07C1418.39 878.57 452.38 1273.57 370.38 1184.57C288.38 1095.57 269.56 731 404.56 629.5C564.69 509.1 690.5 643.5 808.5 516C909.84 406.5 842 308.5 952.56 237.5Z" fill="#244C70" fill-opacity="1.000000" fill-rule="evenodd"/>
+		<circle id="Ellipse 32" cx="602.000000" cy="53.000000" r="28.000000" fill="#244C70" fill-opacity="1.000000"/>
+		<circle id="Ellipse 34" cx="684.000000" cy="119.000000" r="12.000000" fill="#244C70" fill-opacity="1.000000"/>
+		<circle id="Ellipse 35" cx="279.000000" cy="694.000000" r="12.000000" fill="#244C70" fill-opacity="1.000000"/>
+		<circle id="Ellipse 36" cx="225.000000" cy="613.000000" r="30.000000" fill="#244C70" fill-opacity="1.000000"/>
+		<circle id="Ellipse 37" cx="377.000000" cy="592.000000" r="21.000000" fill="#244C70" fill-opacity="1.000000"/>
+		<circle id="Ellipse 33" cx="474.000000" cy="134.000000" r="49.000000" fill="#244C70" fill-opacity="1.000000"/>
+		<circle id="Ellipse 38" cx="1177.000000" cy="102.000000" r="49.000000" fill="#244C70" fill-opacity="1.000000"/>
+		<circle id="Ellipse 39" cx="1056.000000" cy="70.000000" r="32.000000" fill="#244C70" fill-opacity="1.000000"/>
+	</g>
+</svg>

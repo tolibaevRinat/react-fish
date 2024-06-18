@@ -1,0 +1,48 @@
+@import '../../scss/modules/vars';
+@import '../../scss/modules/functions';
+@import '../../scss/modules/mixins';
+
+.list {
+  margin-top: toRem(30);
+
+  font-size: toRem(20);
+
+  a {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: toRem(40);
+    height: toRem(40);
+
+    color: rgb(255, 202, 16);
+
+    cursor: pointer;
+
+    border-radius: 50%;
+
+    border: toRem(1) solid rgb(255, 202, 16);
+
+    transition: background-color 0.3s, color 0.3s, border 0.3s;
+    @media (any-hover: hover) {
+      &:hover {
+        background-color: rgb(255, 202, 16);
+        color: $white;
+      }
+    }
+  }
+  li.selected a {
+    background-color: rgb(255, 202, 16);
+    color: $white;
+  }
+  :global {
+    li.selected a {
+      background-color: rgb(255, 202, 16);
+      color: $white;
+    }
+    li.disabled a {
+      border: toRem(1) solid rgb(151, 151, 151);
+      background-color: rgb(151, 151, 151);
+      color: $white;
+    }
+  }
+}

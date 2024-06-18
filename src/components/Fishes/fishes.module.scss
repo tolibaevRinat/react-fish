@@ -1,0 +1,126 @@
+@import '../../scss/modules/vars';
+@import '../../scss/modules/functions';
+@import '../../scss/modules/mixins';
+
+.items {
+  @media (min-width: toEm($mobileSmall)) {
+    margin-bottom: toRem(100);
+  }
+  margin-bottom: toRem(50);
+}
+.title {
+  margin-bottom: toRem(20);
+}
+.item {
+  padding: toRem(10);
+
+  border-radius: toRem(20);
+
+  background-color: rgb(243, 246, 250);
+
+  height: 100%;
+}
+.top {
+  margin-bottom: toRem(20);
+  height: toRem(196);
+}
+.share {
+  border-radius: toRem(20) 0 toRem(20) 0;
+
+  background-color: rgb(255, 202, 16);
+
+  font-size: toRem(20);
+  color: $white;
+
+  width: toRem(132);
+  height: toRem(60);
+
+  margin-top: toRem(-10);
+  margin-left: toRem(-10);
+}
+.like {
+  width: toRem(44);
+  height: toRem(44);
+
+  background-color: $white;
+  border-radius: toRem(15);
+
+  svg {
+    fill: transparent;
+    stroke: rgb(130, 130, 130);
+    @media (any-hover: hover) {
+      transition: fill 0.3s, stroke 0.3s;
+      &:hover {
+        fill: rgb(255, 202, 16);
+        stroke: rgb(255, 202, 16);
+      }
+    }
+  }
+}
+.like_2 {
+  svg {
+    fill: $black;
+  }
+}
+.img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: toRem(196);
+
+  border-radius: toRem(20);
+
+  overflow: hidden;
+}
+.subtitle {
+  margin-bottom: toRem(10);
+  color: rgb(23, 52, 84);
+  font-size: toRem(20);
+}
+.text {
+  font-size: toRem(18);
+  line-height: calc(21 / 18);
+  color: rgb(36, 76, 112);
+
+  margin-bottom: toRem(45);
+}
+.buy {
+  border-radius: 0 toRem(20) 0 toRem(20);
+  background-color: rgb(46, 127, 198);
+
+  width: toRem(132);
+  height: toRem(60);
+
+  margin-bottom: toRem(-10);
+  margin-left: toRem(-10);
+
+  color: rgb(243, 246, 250);
+  font-size: toRem(20);
+
+  @media (any-hover: hover) {
+    transition: background-color 0.3s;
+    &:hover {
+      background-color: rgb(255, 202, 16);
+    }
+  }
+}
+.del {
+  font-size: toRem(14);
+  line-height: calc(16 / 14);
+  color: rgb(151, 151, 151);
+}
+.price {
+  font-size: toRem(20);
+  color: rgb(23, 52, 84);
+
+  text-wrap: nowrap;
+}
+.have {
+  color: rgb(36, 76, 112);
+  font-size: toRem(12);
+  line-height: calc(14 / 12);
+}
+.center {
+  flex: 1 1 auto;
+}

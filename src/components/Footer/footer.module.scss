@@ -1,0 +1,132 @@
+@import '../../scss/modules/vars';
+@import '../../scss/modules/functions';
+@import '../../scss/modules/mixins';
+
+.footer {
+  @media (min-width: toEm(1440.98)) {
+    padding-bottom: toRem(50);
+  }
+  padding-bottom: toRem(30);
+}
+.logo {
+  img {
+    max-width: 100%;
+  }
+  margin-bottom: toRem(10);
+}
+.call_we,
+.text {
+  font-weight: 700;
+  font-size: toRem(18);
+  @media (min-width: toEm($mobileSmall)) {
+    font-size: toRem(20);
+  }
+}
+.tel {
+  color: rgb(243, 246, 250);
+  line-height: calc(29 / 25);
+  font-size: toRem(18);
+  @media (min-width: toEm($mobileSmall)) {
+    font-size: toRem(25);
+  }
+
+  @media (any-hover: hover) {
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+}
+.body {
+  @media (max-width: toEm($mobile)) {
+    flex-direction: column;
+    gap: toRem(60);
+  }
+  @media (max-width: toEm($mobileSmall)) {
+    align-items: stretch;
+    gap: toRem(40);
+  }
+}
+.left {
+  @media (max-width: toEm($mobile)) {
+    display: flex;
+    gap: toRem(90);
+    justify-content: space-between;
+  }
+  @media (max-width: toEm($mobileSmall)) {
+    gap: toRem(20);
+  }
+}
+.text {
+  margin-bottom: toRem(8);
+}
+.list {
+  a {
+    @media (any-hover: hover) {
+      transition: scale 0.2s;
+      &:hover {
+        scale: 1.1;
+      }
+    }
+  }
+}
+.menu_list {
+  @media (min-width: toEm($tablet)) {
+    margin-bottom: toRem(36);
+  }
+  a {
+    color: rgb(243, 246, 250);
+    font-size: toRem(20);
+    @media (any-hover: hover) {
+      transition: color 0.3s;
+      position: relative;
+      &::before {
+        content: '';
+        display: block;
+        width: 100%;
+        height: toRem(2);
+        background-color: rgb(243, 246, 250);
+        transform-origin: right;
+        position: absolute;
+
+        bottom: toRem(-3);
+
+        left: 50%;
+        transform: translateX(-50%) scaleX(0);
+        transition: transform 0.3s;
+      }
+      &:hover::before {
+        transform: translateX(-50%) scaleX(1);
+        transform-origin: left;
+      }
+    }
+  }
+  @media (max-width: toEm($tablet)) {
+    margin-top: toRem(40);
+  }
+  @media (max-width: toEm($mobile)) {
+    flex-direction: column;
+    align-items: end;
+  }
+}
+.poly {
+  font-weight: 300;
+
+  line-height: calc(19 / 16);
+  font-size: toRem(12);
+  @media (min-width: toEm($mobileSmall)) {
+    font-size: toRem(16);
+  }
+  a {
+    text-decoration: underline;
+    @media (any-hover: hover) {
+      &:hover {
+        text-decoration: none;
+      }
+    }
+  }
+}
+.center {
+  @media (max-width: toEm($tablet)) {
+    margin-bottom: toRem(14);
+  }
+}

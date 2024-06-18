@@ -1,0 +1,319 @@
+@import '../../scss/modules/vars';
+@import '../../scss/modules/functions';
+@import '../../scss/modules/mixins';
+
+.cart {
+  background-color: $white;
+
+  overflow: hidden;
+
+  flex-direction: column;
+  height: auto;
+
+  width: toRem(300);
+  @media (min-width: toEm($mobileSmall)) {
+    width: toRem(440);
+  }
+  @media (min-width: toEm($mobile)) {
+    width: toRem(728);
+  }
+  @media (min-width: toEm($tablet)) {
+    width: toRem(940);
+  }
+  @media (min-width: toEm(1440.98)) {
+    width: toRem(1300);
+    flex-direction: row;
+    height: toRem(766);
+    justify-content: space-between;
+  }
+
+  border-radius: toRem(20);
+
+  overflow-y: auto;
+}
+.main {
+  padding: toRem(20);
+  @media (min-width: toEm(1440.98)) {
+    padding-right: toRem(80);
+    padding-top: toRem(30);
+    padding-left: toRem(40);
+    padding-bottom: toRem(25);
+  }
+
+  overflow-y: auto;
+  @media (max-width: toEm(1440.98)) {
+    max-height: toRem(400);
+  }
+}
+.pay {
+  background-color: rgb(23, 52, 84);
+
+  border-radius: toRem(20);
+
+  padding-right: toRem(20);
+  padding-left: toRem(20);
+  padding-top: toRem(30);
+
+  @media (max-width: toEm(1440.98)) {
+    display: flex;
+    justify-content: space-between;
+    padding-bottom: toRem(40);
+  }
+  @media (max-width: toEm($mobile)) {
+    align-self: stretch;
+  }
+}
+.inner {
+  @media (max-width: toEm($mobile)) {
+    width: 100%;
+  }
+}
+.title,
+.title_2 {
+  font-weight: 700;
+  font-size: toRem(30);
+}
+.title {
+  color: rgb(71, 71, 71);
+}
+.title_2 {
+  color: rgb(243, 246, 250);
+}
+.check {
+  @media (min-width: toEm($mobile)) {
+    width: toRem(320);
+  }
+}
+.submit {
+  align-self: center;
+}
+.to_catalog {
+  width: toRem(210);
+  height: toRem(210);
+
+  span {
+    @media (min-width: toEm($mobile)) {
+      font-size: 25px;
+    }
+    font-size: toRem(20);
+    line-height: calc(29 / 25);
+    color: $white;
+  }
+
+  img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+}
+:global {
+  .popup-overlay {
+    background-color: rgba(7, 20, 33, 0.62);
+
+    overflow-y: auto;
+    padding-top: toRem(20);
+  }
+
+  @keyframes anvil {
+    0% {
+      transform: scale(1) translateY(0px);
+      opacity: 0;
+      box-shadow: 0 0 0 rgba(241, 241, 241, 0);
+    }
+    1% {
+      transform: scale(0.96) translateY(10px);
+      opacity: 0;
+      box-shadow: 0 0 0 rgba(241, 241, 241, 0);
+    }
+    100% {
+      transform: scale(1) translateY(0px);
+      opacity: 1;
+      box-shadow: 0 0 500px rgba(241, 241, 241, 0);
+    }
+  }
+  .popup-content {
+    animation: anvil 0.3s cubic-bezier(0.38, 0.1, 0.36, 0.9) forwards;
+  }
+}
+.item {
+  gap: toRem(40);
+  @media (max-width: toEm($mobileSmall)) {
+    display: block;
+  }
+}
+.fish {
+  @media (min-width: toEm($tablet)) {
+    flex-basis: toRem(400);
+  }
+}
+.img {
+  img {
+    width: toRem(160);
+    height: toRem(100);
+    border-radius: toRem(20);
+    @media (max-width: toEm($mobile)) {
+      width: toRem(102);
+      height: toRem(64);
+    }
+  }
+}
+.name {
+  font-size: toRem(18);
+  @media (min-width: toEm($mobileSmall)) {
+    font-size: toRem(20);
+  }
+  color: rgb(23, 52, 84);
+
+  @media (max-width: toEm($mobile)) {
+    width: toRem(200);
+    white-space: nowrap; /* Запрещает перенос текста на новую строку */
+    overflow: hidden; /* Скрывает текст, выходящий за границы контейнера */
+    text-overflow: ellipsis; /* Добавляет многоточие для обозначения обрезанного текста */
+  }
+  @media (max-width: toEm($mobileSmall)) {
+    width: toRem(100);
+  }
+}
+.list {
+  flex: 1 1 auto;
+}
+.count {
+  color: rgb(36, 76, 112);
+  font-size: toRem(18);
+  @media (min-width: toEm($mobileSmall)) {
+    font-size: toRem(20);
+  }
+  text-wrap: nowrap;
+}
+.btn {
+  position: relative;
+  &:active {
+    top: toRem(1);
+  }
+  @media (any-hover: hover) {
+    transition: color 0.3s;
+    &:hover {
+      color: rgb(255, 202, 16);
+    }
+  }
+}
+.price {
+  color: rgb(23, 52, 84);
+  text-wrap: nowrap;
+}
+.old_price {
+  font-weight: 300;
+  font-size: toRem(12);
+  color: rgb(151, 151, 151);
+}
+.delete {
+  margin: toRem(-5);
+  padding: toRem(5);
+
+  position: relative;
+  &:active {
+    top: toRem(1);
+  }
+  svg {
+    path {
+      stroke: rgb(202, 217, 231);
+      transition: stroke 0.3s;
+    }
+  }
+  @media (any-hover: hover) {
+    &:hover path {
+      stroke: $black;
+    }
+  }
+}
+.close {
+  color: rgb(130, 130, 130);
+  font-size: toRem(18);
+
+  path {
+    stroke: rgb(130, 130, 130);
+    transition: stroke 0.3s;
+  }
+
+  @media (any-hover: hover) {
+    transition: color 0.3s;
+    &:hover {
+      color: rgb(23, 52, 84);
+      path {
+        stroke: rgb(23, 52, 84);
+      }
+    }
+  }
+}
+.total_price {
+  span {
+    font-weight: 700;
+  }
+}
+.total {
+  color: rgb(71, 71, 71);
+}
+.share {
+  color: rgb(63, 163, 250);
+}
+.check {
+  input[type='radio'] {
+    width: toRem(1);
+    height: toRem(1);
+    position: absolute;
+
+    overflow: hidden;
+
+    clip: rect(0 0 0 0);
+  }
+  span {
+    width: toRem(18);
+    height: toRem(18);
+    background-color: rgb(217, 217, 217);
+
+    border-radius: toRem(5);
+
+    transition: background-color 0.3s;
+
+    svg path {
+      stroke: transparent;
+      transition: stroke 0.3s;
+    }
+  }
+  input[type='radio']:checked + span {
+    background-color: rgb(255, 202, 16);
+    svg path {
+      stroke: $white;
+    }
+  }
+}
+.subtitle {
+  color: rgb(243, 246, 250);
+  font-weight: 700;
+  font-size: toRem(18);
+  @media (min-width: toEm($mobileSmall)) {
+    font-size: toRem(20);
+  }
+}
+.input {
+  outline: none;
+
+  color: rgb(243, 246, 250);
+  font-size: toRem(18);
+  &::placeholder {
+    color: rgb(202, 217, 231);
+    transition: font-size 0.3s;
+  }
+  padding-bottom: toRem(5);
+
+  font-weight: 400;
+
+  border-bottom: toRem(1) solid rgb(202, 217, 231);
+
+  &:focus::placeholder {
+    font-size: toRem(0);
+  }
+}
