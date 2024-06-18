@@ -37,11 +37,7 @@ const Fishes = ({ title, description, share, sharePrice, price, image, maxWeight
           <p className={`${styles.text}`}>{description}</p>
         </div>
         <div className={`${styles.bottom} flex al-c jus-b gap-5`}>
-          <button
-            onClick={() => onAddNewItem()}
-            className={`${styles.buy} flex f-cen f-700`}
-            type="button"
-          >
+          <button className={`${styles.buy} flex f-cen f-700`} type="button">
             Купить
           </button>
           <div className={`${styles.prices} flex f-d-col al-c`}>

@@ -21,27 +21,13 @@ const App = () => {
   const [isLoading, setIsLoading] = React.useState(true);
   const [currentPage, setCurrentPage] = React.useState(1);
 
-  const isPc = useMediaQuery({
-    query: '(min-width: 1600.98px)',
-  });
-  const isSmallLaptop = useMediaQuery({
-    query: '(min-width: 1250.98px)',
-  });
-  const isLaptop = useMediaQuery({
-    query: '(min-width: 1440.98px)',
-  });
-  const isTablet = useMediaQuery({
-    query: '(min-width: 991.98px)',
-  });
-  const isMobile = useMediaQuery({
-    query: '(min-width: 767.98px)',
-  });
-  const isSmallMobile = useMediaQuery({
-    query: '(min-width: 479.98px)',
-  });
-  const isFinsihSize = useMediaQuery({
-    query: '(min-width: 359.98px)',
-  });
+  const isPc = useMediaQuery({ minWidth: 1600.98 });
+  const isSmallLaptop = useMediaQuery({ minWidth: 1250.98 });
+  const isLaptop = useMediaQuery({ minWidth: 1440.98 });
+  const isTablet = useMediaQuery({ minWidth: 991.98 });
+  const isMobile = useMediaQuery({ minWidth: 767.98 });
+  const isSmallMobile = useMediaQuery({ minWidth: 479.98 });
+  const isFinsihSize = useMediaQuery({ minWidth: 359.98 });
 
   // Рендор количество пицц на "1 страницу"
   const pageLimit = !isSmallLaptop ? (!isTablet ? (!isMobile ? 1 : 2) : 3) : 4;
