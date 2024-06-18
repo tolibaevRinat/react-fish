@@ -54,7 +54,7 @@ const App = () => {
         <Hero isSmallMobile={isSmallMobile} />
         <Advantages />
         <From isPc={isPc} />
-        <section className={`items rel`}>
+        <section className={`items rel`} id="catalog">
           <img className={`items__bg`} src="img/items-bg.svg" alt=" " />
           <div className={`container`}>
             <h2 className={`items__title title rel z-5`}>Наша продукция</h2>

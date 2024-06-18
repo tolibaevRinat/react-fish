@@ -4,7 +4,6 @@ import Popup from 'reactjs-popup';
 import { useSelector } from 'react-redux';
 
 import styles from './header.module.scss';
-import Search from '../Search';
 import Cart from '../Cart';
 import Favorite from '../Favorite';
 
@@ -13,8 +12,13 @@ const Header = ({ isLaptop, isMobile }) => {
   const [open, setOpen] = React.useState(false);
 
   const { items } = useSelector((state) => state.cart);
+  const { favorites } = useSelector((state) => state.favorite);
 
-  const menuLinks = ['Главная', 'Каталог', 'Контакты'];
+  const menuLinks = [
+    { title: 'Главная', to: '#main' },
+    { title: 'Каталог', to: '#catalog' },
+    { title: 'Контакты', to: '#contact' },
+  ];
 
   const { ref, inView } = useInView({
     threshold: 0.1,
@@ -43,10 +47,10 @@ const Header = ({ isLaptop, isMobile }) => {
                   </a>
                 )}
                 <ul className={`flex al-c`}>
-                  {menuLinks.map((value, index) => (
+                  {menuLinks.map((menuLink, index) => (
                     <li key={index} className={styles.menu__link}>
-                      <a className="menu__link" href="#!">
-                        {value}
+                      <a onClick={() => setOpen(false)} className="menu__link" href={menuLink.to}>
+                        {menuLink.title}
                       </a>
                     </li>
                   ))}
@@ -61,33 +65,14 @@ const Header = ({ isLaptop, isMobile }) => {
                 <span></span>
               </div>
             </nav>
-            <Search show={showInput} setShow={setShowInput} />
             <div className="header__actions flex al-c gap-14">
-              {isLaptop && (
-                <svg
-                  className={styles.svg}
-                  onClick={() => setShowInput(true)}
-                  viewBox="0 0 32 32"
-                  fill="none"
-                  xmlns="http://www.w3.org/2000/svg"
-                  xmlnsXlink="http://www.w3.org/1999/xlink"
-                >
-                  <path
-                    d="M14.33 27.66C6.96 27.66 1 21.69 1 14.33C1 6.96 6.96 1 14.33 1C21.69 1 27.66 6.96 27.66 14.33C27.66 21.69 21.69 27.66 14.33 27.66ZM31 31L23.75 23.75"
-                    strokeOpacity="1.000000"
-                    strokeWidth="2.000000"
-                    strokeLinejoin="round"
-                    strokeLinecap="round"
-                  />
-                </svg>
-              )}
               <Popup
                 onOpen={handleOpen}
                 onClose={handleClose}
                 modal
                 trigger={
                   <button className={`${styles.header__like} rel`} type="button">
-                    <span className="flex f-cen">16</span>
+                    <span className="flex f-cen">{favorites.length}</span>
                     <svg
                       width="32"
                       height="30"
@@ -106,37 +91,34 @@ const Header = ({ isLaptop, isMobile }) => {
                   </button>
                 }
               >
-                <section className={`${styles.favorite}`}>
-                  <div className={`${styles.top} flex al-c jus-b gap-20`}>
-                    <h2 className={`${styles.favorite_title}`}>Понравившиеся товары</h2>
-                    <button className={`${styles.close}`}>
-                      <svg
-                        width="24.003906"
-                        height="24.003906"
-                        viewBox="0 0 24.0039 24.0039"
-                        fill="none"
-                        xmlns="http://www.w3.org/2000/svg"
-                        xmlnsXlink="http://www.w3.org/1999/xlink"
-                      >
-                        <path
-                          d="M0.5 0.5L23.5 23.5M0.5 23.5L23.5 0.5"
-                          strokeOpacity="1.000000"
-                          strokeWidth="1.000000"
-                        />
-                      </svg>
-                    </button>
-                  </div>
-                  <ul className={`${styles.favorite_list}`}>
-                    <Favorite />
-                    <Favorite />
-                    <Favorite />
-                    <Favorite />
-                    <Favorite />
-                    <Favorite />
-                    <Favorite />
-                    <Favorite />
-                  </ul>
-                </section>
+                {(close) => (
+                  <section className={`${styles.favorite}`}>
+                    <div className={`${styles.top} flex al-c jus-b gap-20`}>
+                      <h2 className={`${styles.favorite_title}`}>Понравившиеся товары</h2>
+                      <button onClick={close} className={`${styles.close}`}>
+                        <svg
+                          width="24.003906"
+                          height="24.003906"
+                          viewBox="0 0 24.0039 24.0039"
+                          fill="none"
+                          xmlns="http://www.w3.org/2000/svg"
+                          xmlnsXlink="http://www.w3.org/1999/xlink"
+                        >
+                          <path
+                            d="M0.5 0.5L23.5 23.5M0.5 23.5L23.5 0.5"
+                            strokeOpacity="1.000000"
+                            strokeWidth="1.000000"
+                          />
+                        </svg>
+                      </button>
+                    </div>
+                    <ul className={`${styles.favorite_list}`}>
+                      {favorites.map((favorite) => (
+                        <Favorite key={favorite.id} {...favorite} />
+                      ))}
+                    </ul>
+                  </section>
+                )}
               </Popup>
 
               <Popup

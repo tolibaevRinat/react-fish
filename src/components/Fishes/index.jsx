@@ -3,37 +3,57 @@ import { useDispatch, useSelector } from 'react-redux';
 
 import styles from './fishes.module.scss';
 import { addItem } from '../../redux/slices/cartSlice';
+import { addFavorite } from '../../redux/slices/favoriteSlice';
 
 const Fishes = ({ id, title, description, share, sharePrice, price, image, maxWeight }) => {
   const dispatch = useDispatch();
 
   const cartItem = useSelector((state) => state.cart.items.find((obj) => obj.id === id));
 
-  const isHave = cartItem ? cartItem.isHave : false;
+  const favoriteItem = useSelector((state) =>
+    state.favorite.favorites.find((obj) => obj.id === id),
+  );
 
-  const addToCart = () => {
+  const isHave = cartItem ? cartItem.isHave : false;
+  const isFavorite = favoriteItem ? favoriteItem.isFavorite : false;
+
+  const addTo = (func) => {
     const item = {
       id,
       title,
+      description,
       share,
       sharePrice,
       price,
       image,
       maxWeight,
     };
-    dispatch(addItem(item));
+    dispatch(func(item));
   };
+
+  const addToCart = () => {
+    addTo(addItem);
+  };
+
+  const addToFavorite = () => {
+    addTo(addFavorite);
+  };
+
   return (
     <li>
       <article className={`${styles.item} flex f-d-col rel`}>
         <div className={`${styles.top} flex al-f-s ${share ? 'jus-b' : 'jus-n'}`}>
           {share && <div className={`${styles.share} rel z-5 flex f-cen f-700`}>Суперцена</div>}
-          <button className={`${styles.like} rel z-5 flex f-cen`} type="button">
+          <button
+            onClick={addToFavorite}
+            className={`${styles.like} ${isFavorite ? 'favorite' : ''} rel z-5 flex f-cen`}
+            type="button"
+          >
             <svg
               className="pointer"
-              width="29.001465"
-              height="26.750000"
-              viewBox="0 0 29.0015 26.75"
+              width="30"
+              height="28"
+              viewBox="0 0 30 28"
               xmlns="http://www.w3.org/2000/svg"
               xmlnsXlink="http://www.w3.org/1999/xlink"
             >

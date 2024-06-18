@@ -8,7 +8,7 @@ const Footer = ({ isTablet }) => {
   const links = ['Главная', 'Каталог', 'Контакты'];
 
   return (
-    <footer className={`${styles.footer}`}>
+    <footer className={`${styles.footer}`} id="contact">
       <div className={`${styles.body} container flex al-c jus-b gap-20`}>
         <div className={`${styles.left}`}>
           <div className={`${styles.top} flex f-d-col gap-10`}>

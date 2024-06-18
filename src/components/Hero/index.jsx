@@ -5,7 +5,7 @@ import styles from './hero.module.scss';
 
 const Hero = ({ isSmallMobile }) => {
   return (
-    <section className={`${styles.hero} rel`}>
+    <section className={`${styles.hero} rel`} id="main">
       <picture className={`${styles.surge_01}`}>
         <source srcSet="img/hero-bg.webp" type="image/webp" />
         <img src="img/hero-bg.png" alt=" " />

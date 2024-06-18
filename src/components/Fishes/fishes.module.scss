@@ -130,4 +130,10 @@
     color: rgb(23, 52, 84);
     pointer-events: none;
   }
+  .favorite {
+    svg {
+      fill: rgb(255, 202, 16);
+      stroke: rgb(255, 202, 16);
+    }
+  }
 }

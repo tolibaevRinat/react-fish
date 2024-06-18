@@ -16,6 +16,11 @@
 @import './fragments';
 
 .items {
+  scroll-margin-top: toRem(80);
+
+  @media (min-width: toEm($mobile)) {
+    scroll-margin-top: toRem(100);
+  }
   @media (min-width: toEm($mobileSmall)) {
     margin-bottom: toRem(100);
   }
