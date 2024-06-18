@@ -53,6 +53,9 @@
   padding-right: toRem(20);
   padding-left: toRem(20);
   padding-top: toRem(30);
+  padding-bottom: toRem(20);
+
+  overflow-y: auto;
 
   @media (max-width: toEm(1440.98)) {
     display: flex;
@@ -316,4 +319,7 @@
   &:focus::placeholder {
     font-size: toRem(0);
   }
+}
+.weight {
+  width: toRem(55);
 }

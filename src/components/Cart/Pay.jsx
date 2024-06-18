@@ -1,15 +1,40 @@
 import React from 'react';
+import { useForm } from 'react-hook-form';
+import InputMask from 'react-input-mask';
 
 import styles from './cart.module.scss';
 const Pap = ({ isLaptop, isMobile }) => {
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+    setValue,
+    reset,
+  } = useForm();
+
+  const showResult = (data) => {
+    alert('Спасибо за заказ');
+    reset({ desc: '', name: '', tel: '+998' });
+  };
+
+  React.useEffect(() => {
+    // Устанавливаем начальное значение для телефона
+    setValue('tel', '+998');
+  }, [setValue]);
+
   return (
-    <form className={`${styles.pay}`}>
+    <form onSubmit={handleSubmit(showResult)} className={`${styles.pay}`}>
       <div className={`${styles.inner} flex f-d-col gap-20 rel`}>
         <h2 className={`${styles.title_2}`}>Оплата и доставка</h2>
         <div className={`${styles.check} flex f-d-col gap-10`}>
           <h3 className={`${styles.subtitle}`}>Выберите способ доставки</h3>
           <label className="flex al-c gap-10">
-            <input type="radio" name="delivery" />
+            <input
+              className={`${styles.input}`}
+              {...register('delivery', { required: true })}
+              type="radio"
+              defaultChecked
+            />
             <span className="flex f-cen">
               <svg
                 width="10"
@@ -28,7 +53,11 @@ const Pap = ({ isLaptop, isMobile }) => {
             Самовывоз
           </label>
           <label className="flex al-c gap-10">
-            <input type="radio" defaultChecked name="delivery" />
+            <input
+              className={`${styles.input}`}
+              {...register('delivery', { required: true })}
+              type="radio"
+            />
             <span className="flex f-cen">
               <svg
                 width="10"
@@ -50,7 +79,12 @@ const Pap = ({ isLaptop, isMobile }) => {
         <div className={`${styles.check} flex f-d-col gap-10`}>
           <h3 className={`${styles.subtitle}`}>Выберите способ доставки</h3>
           <label className="flex al-c gap-10">
-            <input type="radio" name="toPay" />
+            <input
+              className={`${styles.input}`}
+              {...register('toPay', { required: true })}
+              type="radio"
+              defaultChecked
+            />
             <span className="flex f-cen">
               <svg
                 width="10"
@@ -69,7 +103,11 @@ const Pap = ({ isLaptop, isMobile }) => {
             Наличными (При получении)
           </label>
           <label className="flex al-c gap-10">
-            <input type="radio" defaultChecked name="toPay" />
+            <input
+              className={`${styles.input}`}
+              {...register('toPay', { required: true })}
+              type="radio"
+            />
             <span className="flex f-cen">
               <svg
                 width="10"
@@ -90,17 +128,52 @@ const Pap = ({ isLaptop, isMobile }) => {
         </div>
         <div className={`${styles.check} flex f-d-col gap-10`}>
           <h3 className={`${styles.subtitle}`}>Мобильный телефон</h3>
-          <input className={`${styles.input}`} type="tel" placeholder="Телефон" />
+
+          <InputMask
+            className={`${styles.input}`}
+            mask="+998 (99) 999-99-99"
+            maskChar="_"
+            {...register('tel', {
+              required: 'Правильно заполните номер тедефона',
+              validate: (value) => {
+                const regex = /^\+998 \(\d{2}\) \d{3}-\d{2}-\d{2}$/;
+                return regex.test(value) || 'Правильно заполните номер тедефона';
+              },
+            })}
+          >
+            {(inputProps) => <input {...inputProps} type="tel" placeholder="Телефон" />}
+          </InputMask>
+          {errors.tel && <div style={{ color: 'red' }}>{errors.tel.message}</div>}
         </div>
         {(isLaptop || isMobile) && (
           <>
             <div className={`${styles.check} flex f-d-col gap-10`}>
               <h3 className={`${styles.subtitle}`}>Эл. почта</h3>
-              <input className={`${styles.input}`} type="email" placeholder="naumov.d@gmail.com" />
+              <input
+                {...register('email', {
+                  required: 'Пожалуйста введите валидный Email',
+                  pattern: {
+                    value:
+                      /^((([0-9A-Za-z]{1}[-0-9A-z\.]{1,}[0-9A-Za-z]{1})|([0-9А-Яа-я]{1}[-0-9А-я\.]{1,}[0-9А-Яа-я]{1}))@([-A-Za-z]{1,}\.){1,2}[-A-Za-z]{2,})$/u,
+                    message: 'Пожалуйста введите валидный Email',
+                  },
+                })}
+                className={`${styles.input}`}
+                type="email"
+                placeholder="naumov.d@gmail.com"
+              />
+              {errors.email && <div style={{ color: 'red' }}>{errors.email.message}</div>}
             </div>
             <div className={`${styles.check} flex f-d-col gap-10`}>
               <h3 className={`${styles.subtitle}`}>Куда доставлять</h3>
-              <input className={`${styles.input}`} type="text" placeholder="Введите адрес" />
+
+              <input
+                className={`${styles.input}`}
+                {...register('adres', { required: true })}
+                type="text"
+                placeholder="Введите адрес"
+              />
+              {errors.adres && <div style={{ color: 'red' }}>Вы не ввели ваш адрес</div>}
             </div>
             <button className={`${styles.submit}`} type="submit">
               <a className={`${styles.to_catalog} rel flex f-cen t-a-cen`} href="#!">
@@ -118,11 +191,30 @@ const Pap = ({ isLaptop, isMobile }) => {
         <div className={`${styles.right} flex f-d-col gap-20`}>
           <div className={`${styles.check} flex f-d-col gap-10`}>
             <h3 className={`${styles.subtitle}`}>Эл. почта</h3>
-            <input className={`${styles.input}`} type="email" placeholder="naumov.d@gmail.com" />
+            <input
+              {...register('email', {
+                required: 'Пожалуйста введите валидный Email',
+                pattern: {
+                  value:
+                    /^((([0-9A-Za-z]{1}[-0-9A-z\.]{1,}[0-9A-Za-z]{1})|([0-9А-Яа-я]{1}[-0-9А-я\.]{1,}[0-9А-Яа-я]{1}))@([-A-Za-z]{1,}\.){1,2}[-A-Za-z]{2,})$/u,
+                  message: 'Пожалуйста введите валидный Email',
+                },
+              })}
+              className={`${styles.input}`}
+              type="email"
+              placeholder="naumov.d@gmail.com"
+            />
+            {errors.email && <div style={{ color: 'red' }}>{errors.email.message}</div>}
           </div>
           <div className={`${styles.check} flex f-d-col gap-10`}>
             <h3 className={`${styles.subtitle}`}>Куда доставлять</h3>
-            <input className={`${styles.input}`} type="text" placeholder="Введите адрес" />
+            <input
+              className={`${styles.input}`}
+              {...register('adres', { required: true })}
+              type="text"
+              placeholder="Введите адрес"
+            />
+            {errors.adres && <div style={{ color: 'red' }}>Вы не ввели ваш адрес</div>}
           </div>
           <button className={`${styles.submit}`} type="submit">
             <a className={`${styles.to_catalog} rel flex f-cen t-a-cen`} href="#!">

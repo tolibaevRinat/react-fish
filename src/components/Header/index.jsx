@@ -1,6 +1,7 @@
 import React from 'react';
 import { useInView } from 'react-intersection-observer';
 import Popup from 'reactjs-popup';
+import { useSelector } from 'react-redux';
 
 import styles from './header.module.scss';
 import Search from '../Search';
@@ -11,19 +12,16 @@ const Header = ({ isLaptop, isMobile }) => {
   const [showInput, setShowInput] = React.useState(false);
   const [open, setOpen] = React.useState(false);
 
+  const { items } = useSelector((state) => state.cart);
+
   const menuLinks = ['Главная', 'Каталог', 'Контакты'];
 
   const { ref, inView } = useInView({
     threshold: 0.1,
   });
 
-  const handleOpen = () => {
-    document.body.style.overflow = 'hidden';
-  };
-  const handleClose = () => {
-    document.body.style.overflow = 'auto';
-  };
-
+  const handleOpen = () => (document.body.style.overflow = 'hidden');
+  const handleClose = () => (document.body.style.overflow = 'auto');
   return (
     <header ref={ref} className={`${styles.header}`}>
       {showInput && (
@@ -89,7 +87,7 @@ const Header = ({ isLaptop, isMobile }) => {
                 modal
                 trigger={
                   <button className={`${styles.header__like} rel`} type="button">
-                    <span className="inline-block">16</span>
+                    <span className="flex f-cen">16</span>
                     <svg
                       width="32"
                       height="30"
@@ -146,7 +144,7 @@ const Header = ({ isLaptop, isMobile }) => {
                 onClose={handleClose}
                 trigger={
                   <button className={`${styles.basket} rel`}>
-                    <span className="inline-block">16</span>
+                    <span className="flex f-cen">{items.length}</span>
                     <svg
                       width="34.367188"
                       height="28.670334"
@@ -172,7 +170,7 @@ const Header = ({ isLaptop, isMobile }) => {
                 }
                 modal
               >
-                <Cart />;
+                {(close) => <Cart close={close} />}
               </Popup>
             </div>
           </div>

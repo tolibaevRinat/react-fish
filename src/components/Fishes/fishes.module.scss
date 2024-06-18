@@ -124,3 +124,10 @@
 .center {
   flex: 1 1 auto;
 }
+:global {
+  .added {
+    background-color: transparent;
+    color: rgb(23, 52, 84);
+    pointer-events: none;
+  }
+}

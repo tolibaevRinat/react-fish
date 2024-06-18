@@ -1,35 +1,69 @@
 import React from 'react';
+import { useSelector, useDispatch } from 'react-redux';
 
 import styles from './cart.module.scss';
+import { upWeight, downWeight, removeItem } from '../../redux/slices/cartSlice';
 
-const CartItem = ({ isMobile, isSmallMobile }) => {
+const CartItem = ({
+  id,
+  title,
+  share,
+  sharePrice,
+  price,
+  image,
+  maxWeight,
+  isMobile,
+  isSmallMobile,
+}) => {
+  const { weight } = useSelector((state) => state.cart.items.find((obj) => obj.id === id));
+
+  const dispatch = useDispatch();
+
+  const onClickPlus = () => {
+    dispatch(upWeight({ id }));
+  };
+  const onClickMinus = () => {
+    dispatch(downWeight({ id }));
+  };
+  const onClickRemove = () => {
+    dispatch(removeItem({ id }));
+  };
+
   return (
     <li>
       {!isSmallMobile && (
         <article className={`${styles.item} flex al-c gap-20 jus-b`}>
           <div className={`${styles.fish} flex al-c gap-20`}>
             <picture className={`${styles.img} rel z-5`}>
-              <source srcSet="img/items/01.webp" type="image/webp" />
-              <img src="img/items/01.png" alt="Рыба" />
+              <source srcSet={image.webp} type="image/webp" />
+              <img src={image.jpg} alt="Рыба" />
             </picture>
             <div className="flex f-d-col gap-10">
-              <h3 className={`${styles.name}`}>Форель</h3>
+              <h3 className={`${styles.name}`}>{title}</h3>
               {isMobile && (
                 <div className="flex al-c jus-b">
                   <div className={`${styles.count} flex al-c gap-20`}>
-                    <button className={`${styles.btn}`}>
+                    <button
+                      onClick={onClickMinus}
+                      disabled={weight < 1}
+                      className={`${styles.btn}`}
+                    >
                       <b>-</b>
                     </button>
                     <div className={`${styles.weight}`}>
-                      <b>1,5 кг</b>
+                      <b>{weight} кг</b>
                     </div>
-                    <button className={`${styles.btn}`}>
+                    <button
+                      onClick={onClickPlus}
+                      disabled={weight > maxWeight - 0.5}
+                      className={`${styles.btn}`}
+                    >
                       <b>+</b>
                     </button>
                   </div>
                   <div className={`${styles.price} flex f-d-col al-n`}>
-                    <del className={`${styles.old_price}`}>2500 ₽ </del>
-                    <span>1800 ₽</span>
+                    {share && <del className={`${styles.old_price}`}>{sharePrice} ₽ </del>}
+                    <span>{price} ₽</span>
                   </div>
                 </div>
               )}
@@ -38,24 +72,28 @@ const CartItem = ({ isMobile, isSmallMobile }) => {
           {!isMobile && (
             <>
               <div className={`${styles.count} flex al-c gap-20`}>
-                <button className={`${styles.btn}`}>
+                <button onClick={onClickMinus} disabled={weight < 1} className={`${styles.btn}`}>
                   <b>-</b>
                 </button>
                 <div className={`${styles.weight}`}>
-                  <b>1,5 кг</b>
+                  <b>{weight} кг</b>
                 </div>
-                <button className={`${styles.btn}`}>
+                <button
+                  onClick={onClickPlus}
+                  disabled={weight > maxWeight - 0.5}
+                  className={`${styles.btn}`}
+                >
                   <b>+</b>
                 </button>
               </div>
               <div className={`${styles.price} flex f-d-col al-n`}>
-                <del className={`${styles.old_price}`}>2500 ₽ </del>
-                <span>1800 ₽</span>
+                {share && <del className={`${styles.old_price}`}>{sharePrice} ₽ </del>}
+                <span>{price} ₽</span>
               </div>
             </>
           )}
 
-          <button className={`${styles.delete}`}>
+          <button onClick={onClickRemove} className={`${styles.delete}`}>
             <svg
               width="18"
               height="18"
@@ -77,7 +115,7 @@ const CartItem = ({ isMobile, isSmallMobile }) => {
                 <img src="img/items/01.png" alt="Рыба" />
               </picture>
               <h3 className={`${styles.name}`}>{title}</h3>
-              <button className={`${styles.delete}`}>
+              <button onClick={onClickRemove} className={`${styles.delete}`}>
                 <svg
                   width="18"
                   height="18"
@@ -92,19 +130,23 @@ const CartItem = ({ isMobile, isSmallMobile }) => {
 
             <div className="flex jus-b gap-10">
               <div className={`${styles.count} flex al-c gap-20`}>
-                <button className={`${styles.btn}`}>
+                <button onClick={onClickMinus} disabled={weight < 1} className={`${styles.btn}`}>
                   <b>-</b>
                 </button>
                 <div className={`${styles.weight}`}>
-                  <b>1,5 кг</b>
+                  <b>{weight} кг</b>
                 </div>
-                <button className={`${styles.btn}`}>
+                <button
+                  onClick={onClickMinus}
+                  disabled={weight > maxWeight - 0.5}
+                  className={`${styles.btn}`}
+                >
                   <b>+</b>
                 </button>
               </div>
               <div className={`${styles.price} flex f-d-col al-n`}>
-                <del className={`${styles.old_price}`}>2500 ₽ </del>
-                <span>1800 ₽</span>
+                {share && <del className={`${styles.old_price}`}>{sharePrice} ₽ </del>}
+                <span>{price} ₽</span>
               </div>
             </div>
           </div>

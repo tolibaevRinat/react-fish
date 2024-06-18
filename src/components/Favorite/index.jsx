@@ -1,9 +1,6 @@
 import React from 'react';
 
-// import styles from './favorite.module.scss';
 import styles from '../Fishes/fishes.module.scss';
-
-import Fishes from '../Fishes';
 
 const Favorite = () => {
   return (

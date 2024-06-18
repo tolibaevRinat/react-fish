@@ -1,11 +1,29 @@
 import React from 'react';
 import { useMediaQuery } from 'react-responsive';
+import { useSelector } from 'react-redux';
 
 import styles from './cart.module.scss';
 import CartItem from './CartItem';
 import Pay from './Pay';
 
-const Cart = () => {
+const Cart = ({ close }) => {
+  const items = useSelector((state) => state.cart.items);
+
+  const totalPrice = useSelector((state) =>
+    state.cart.items.reduce((sum, obj) => {
+      let all = 0;
+      obj.share
+        ? (all += sum + obj.sharePrice * obj.weight)
+        : (all += sum + obj.price * obj.weight);
+
+      return all;
+    }, 0),
+  );
+
+  const priceWithShare = useSelector((state) =>
+    state.cart.items.reduce((sum, obj) => sum + obj.price * obj.weight, 0),
+  );
+
   const isLaptop = useMediaQuery({ minWidth: 1440.98 });
   const isMobile = useMediaQuery({ maxWidth: 767.98 });
   const isSmallMobile = useMediaQuery({ maxWidth: 479.98 });
@@ -15,10 +33,12 @@ const Cart = () => {
       <div className={`${styles.main} flex f-d-col gap-20 grow`}>
         <h2 className={`${styles.title} `}>Ваша корзина</h2>
         <ul className={`${styles.list} flex f-d-col gap-20`}>
-          <CartItem isMobile={isMobile} isSmallMobile={isSmallMobile} />
+          {items.map((item) => (
+            <CartItem key={item.id} {...item} isMobile={isMobile} isSmallMobile={isSmallMobile} />
+          ))}
         </ul>
         <div className={`${styles.bottom} flex al-c gap-20 jus-b`}>
-          <button className={`${styles.close} flex al-c gap-10`}>
+          <button onClick={close} className={`${styles.close} flex al-c gap-10`}>
             <svg
               width="20"
               height="14"
@@ -37,10 +57,10 @@ const Cart = () => {
           </button>
           <div className={`${styles.total_price} flex f-d-col al-n gap-10`}>
             <p className={`${styles.total} flex gap-10`}>
-              <b>Итого:</b> 25 384 ₽
+              <b>Итого:</b> {totalPrice} ₽
             </p>
             <p className={`${styles.share} flex gap-10`}>
-              <b>Со скидкой:</b> 22 000 ₽
+              <b>Со скидкой:</b> {priceWithShare} ₽
             </p>
           </div>
         </div>

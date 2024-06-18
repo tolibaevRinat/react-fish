@@ -2,7 +2,7 @@ import { createSlice } from '@reduxjs/toolkit';
 
 const initialState = {
   items: [],
-  totalPrice: 0,
+  weight: 0.5,
 };
 
 export const cartSlice = createSlice({
@@ -10,18 +10,36 @@ export const cartSlice = createSlice({
   initialState,
   reducers: {
     addItem(state, action) {
-      state.items.push(action.payload);
+      const findItem = state.items.find((obj) => obj.id === action.payload.id);
+
+      if (!findItem) {
+        state.items.push({
+          ...action.payload,
+          isHave: true,
+          weight: 0.5,
+        });
+      }
+    },
+    upWeight(state, action) {
+      const findItem = state.items.find((obj) => obj.id === action.payload.id);
+
+      if (findItem) {
+        findItem.weight += 0.5;
+      }
+    },
+    downWeight(state, action) {
+      const findItem = state.items.find((obj) => obj.id === action.payload.id);
+
+      if (findItem) {
+        findItem.weight -= 0.5;
+      }
     },
     removeItem(state, action) {
-      state.items.filter((obj) => obj.id !== action.payload);
-    },
-    clearItems(state) {
-      state.items = [];
-      state.totalPrice = 0;
+      state.items = state.items.filter((obj) => obj.id !== action.payload.id);
     },
   },
 });
 
-export const { addItem, removeItem, clearItems } = cartSlice.actions;
+export const { addItem, upWeight, downWeight, removeItem } = cartSlice.actions;
 
 export default cartSlice.reducer;

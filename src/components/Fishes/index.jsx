@@ -1,8 +1,28 @@
 import React from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 
 import styles from './fishes.module.scss';
+import { addItem } from '../../redux/slices/cartSlice';
 
-const Fishes = ({ title, description, share, sharePrice, price, image, maxWeight }) => {
+const Fishes = ({ id, title, description, share, sharePrice, price, image, maxWeight }) => {
+  const dispatch = useDispatch();
+
+  const cartItem = useSelector((state) => state.cart.items.find((obj) => obj.id === id));
+
+  const isHave = cartItem ? cartItem.isHave : false;
+
+  const addToCart = () => {
+    const item = {
+      id,
+      title,
+      share,
+      sharePrice,
+      price,
+      image,
+      maxWeight,
+    };
+    dispatch(addItem(item));
+  };
   return (
     <li>
       <article className={`${styles.item} flex f-d-col rel`}>
@@ -37,8 +57,13 @@ const Fishes = ({ title, description, share, sharePrice, price, image, maxWeight
           <p className={`${styles.text}`}>{description}</p>
         </div>
         <div className={`${styles.bottom} flex al-c jus-b gap-5`}>
-          <button className={`${styles.buy} flex f-cen f-700`} type="button">
-            Купить
+          <button
+            onClick={addToCart}
+            className={`${styles.buy} ${isHave ? 'added' : ''} flex f-cen f-700`}
+            type="button"
+            disabled={isHave}
+          >
+            {isHave ? 'В корзине' : 'Купить'}
           </button>
           <div className={`${styles.prices} flex f-d-col al-c`}>
             {share && <del className={`${styles.del} al-s-n f-300`}>{sharePrice} ₽ / кг.</del>}

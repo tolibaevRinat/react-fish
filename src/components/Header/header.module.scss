@@ -178,13 +178,16 @@
     border-radius: toRem(8);
     font-size: toRem(10);
 
+    border-radius: 50%;
+    aspect-ratio: 1/1;
+
     color: $white;
 
-    padding: toRem(3);
+    padding: toRem(0) toRem(4);
 
     position: absolute;
-    top: toRem(-7);
-    right: toRem(-10);
+    top: toRem(-6);
+    right: toRem(-8);
   }
   svg {
     stroke: $white;
