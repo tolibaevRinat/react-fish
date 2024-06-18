@@ -22,3 +22,26 @@
 .popup-content {
   -webkit-animation: anvil 0.3s cubic-bezier(0.38, 0.1, 0.36, 0.9) forwards;
 }
+.empty {
+  text-align: center;
+
+  background-color: $white;
+  color: rgb(23, 52, 84);
+
+  max-width: toRem(800);
+  margin: 0 auto;
+
+  border-radius: toRem(16);
+  border: toRem(2) solid $color;
+
+  padding: toRem(20);
+  h2 {
+    font-size: toRem(30);
+    margin-bottom: toRem(20);
+    font-weight: 700;
+  }
+  p {
+    font-size: toRem(24);
+    line-height: calc(30 / 24);
+  }
+}

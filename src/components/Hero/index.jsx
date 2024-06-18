@@ -1,5 +1,4 @@
 import React from 'react';
-import { useMediaQuery } from 'react-responsive';
 
 import styles from './hero.module.scss';
 
@@ -24,7 +23,7 @@ const Hero = ({ isSmallMobile }) => {
               <img src="img/hero.png" alt="Рыба" />
             </picture>
           )}
-          <a className={`${styles.to_catalog} rel`} href="#!">
+          <a className={`${styles.to_catalog} rel`} href="#catalog">
             <img src="img/sun.svg" alt=" " />
             <span className="rel z-5 f-700">
               Перейти

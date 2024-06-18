@@ -51,7 +51,7 @@ const Step = ({ isSmallMobile, isFinsihSize }) => {
               </li>
             ))}
           </ul>
-          <a className={`${styles.to_catalog} rel flex f-cen t-a-cen z-5`} href="#!">
+          <a className={`${styles.to_catalog} rel flex f-cen t-a-cen z-5`} href="#catalog">
             <img src="img/sun-white.svg" alt=" " />
             <span className="rel z-5 f-700">
               Заказать

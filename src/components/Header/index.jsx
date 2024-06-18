@@ -7,7 +7,7 @@ import styles from './header.module.scss';
 import Cart from '../Cart';
 import Favorite from '../Favorite';
 
-const Header = ({ isLaptop, isMobile }) => {
+const Header = ({ isMobile }) => {
   const [showInput, setShowInput] = React.useState(false);
   const [open, setOpen] = React.useState(false);
 
@@ -112,11 +112,17 @@ const Header = ({ isLaptop, isMobile }) => {
                         </svg>
                       </button>
                     </div>
-                    <ul className={`${styles.favorite_list}`}>
-                      {favorites.map((favorite) => (
-                        <Favorite key={favorite.id} {...favorite} />
-                      ))}
-                    </ul>
+                    {favorites.length > 0 ? (
+                      <ul className={`${styles.favorite_list}`}>
+                        {favorites.map((favorite) => (
+                          <Favorite key={favorite.id} {...favorite} />
+                        ))}
+                      </ul>
+                    ) : (
+                      <h2 className={`${styles.empty} ${styles.list} flex f-cen`}>
+                        Закладки пустые
+                      </h2>
+                    )}
                   </section>
                 )}
               </Popup>

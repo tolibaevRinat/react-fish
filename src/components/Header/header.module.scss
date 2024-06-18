@@ -200,29 +200,7 @@
     }
   }
 }
-// .header__basket {
-//   span {
-//     background-color: rgb(255, 202, 16);
-//     border-radius: toRem(8);
-//     font-size: toRem(10);
 
-//     color: $white;
-
-//     padding: toRem(3);
-
-//     position: absolute;
-//     top: toRem(-7);
-//     right: toRem(-10);
-//   }
-//   stroke: $white;
-//   cursor: pointer;
-//   @media (any-hover: hover) {
-//     transition: stroke 0.3s;
-//     &:hover {
-//       stroke: rgba(243, 246, 250, 0.5);
-//     }
-//   }
-// }
 .header__overlay {
   position: fixed;
   top: 0;
@@ -297,4 +275,12 @@
     }
   }
   /* animation */
+}
+.empty {
+  @include adaptiveValue(font-size, 40, 26, $maxWidthContainer, 320);
+  text-align: center;
+
+  color: $white;
+  height: 100%;
+  font-weight: 700;
 }

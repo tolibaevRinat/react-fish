@@ -32,11 +32,16 @@ const Cart = ({ close }) => {
     <section className={`${styles.cart} flex`}>
       <div className={`${styles.main} flex f-d-col gap-20 grow`}>
         <h2 className={`${styles.title} `}>Ваша корзина</h2>
-        <ul className={`${styles.list} flex f-d-col gap-20`}>
-          {items.map((item) => (
-            <CartItem key={item.id} {...item} isMobile={isMobile} isSmallMobile={isSmallMobile} />
-          ))}
-        </ul>
+        {items.length > 0 ? (
+          <ul className={`${styles.list} flex f-d-col gap-20`}>
+            {items.map((item) => (
+              <CartItem key={item.id} {...item} isMobile={isMobile} isSmallMobile={isSmallMobile} />
+            ))}
+          </ul>
+        ) : (
+          <h2 className={`${styles.empty} ${styles.list} flex f-cen`}>Корзина пустая </h2>
+        )}
+
         <div className={`${styles.bottom} flex al-c gap-20 jus-b`}>
           <button onClick={close} className={`${styles.close} flex al-c gap-10`}>
             <svg

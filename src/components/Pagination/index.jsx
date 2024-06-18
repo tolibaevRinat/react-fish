@@ -6,7 +6,7 @@ import styles from './pagination.module.scss';
 const Pagination = ({ totalPages, onChange }) => {
   return (
     <ReactPaginate
-      className={`${styles.list} flex f-cen gap-20 f-wrap`}
+      className={`${styles.list} flex f-cen gap-20 f-wrap rel z-5`}
       breakLabel="..."
       nextLabel=">"
       onPageChange={(event) => onChange(event.selected + 1)}

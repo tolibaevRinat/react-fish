@@ -1,5 +1,4 @@
 import React from 'react';
-import axios from 'axios';
 import { useMediaQuery } from 'react-responsive';
 import { useDispatch, useSelector } from 'react-redux';
 
@@ -41,6 +40,8 @@ const App = () => {
 
   const totalPages = fishes.meta ? fishes.meta.total_pages : 4;
 
+  const skeleton = [...new Array(4)].map((_, index) => <Skeleton key={index} />);
+
   return (
     <>
       <Header isLaptop={isLaptop} isMobile={isMobile} />
@@ -52,11 +53,23 @@ const App = () => {
           <img className={`items__bg`} src="img/items-bg.svg" alt=" " />
           <div className={`container`}>
             <h2 className={`items__title title rel z-5`}>Наша продукция</h2>
-            <ul className={`items__list grid gap-20 rel z-5`}>
-              {status === 'loading'
-                ? [...new Array(4)].map((_, index) => <Skeleton key={index} />)
-                : fishes.items.map((fish) => <Fishes key={fish.id} {...fish} />)}
-            </ul>
+            {status === 'success' && (
+              <ul className={`items__list grid gap-20 rel z-5`}>
+                {status === 'loading'
+                  ? skeleton
+                  : fishes.items.map((fish) => <Fishes key={fish.id} {...fish} />)}
+              </ul>
+            )}
+            {status === 'error' && (
+              <section className={`empty rel z-5`}>
+                <h2>Ошибка при получении товаров &#128532;</h2>
+                <p>
+                  К сожалению, произошла ошибка при получении товаров. Пожалуйста, попробуйте снова
+                  позже.
+                </p>
+              </section>
+            )}
+
             <Pagination totalPages={totalPages} onChange={(number) => setCurrentPage(number)} />
           </div>
         </section>

@@ -25,7 +25,7 @@ const From = ({ isPc }) => {
             {isPc && <img className={`${styles.arrow}`} src="img/arrow.svg" alt=" " />}
           </p>
           <div className={`${styles.bottom}`}>
-            <a className={`${styles.to_catalog} rel`} href="#!">
+            <a className={`${styles.to_catalog} rel`} href="#catalog">
               <img src="img/sun-white.svg" alt=" " />
               <span className="rel z-5 f-700">
                 Смотреть

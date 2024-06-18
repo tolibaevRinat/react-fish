@@ -323,3 +323,10 @@
 .weight {
   width: toRem(55);
 }
+.empty {
+  @include adaptiveValue(font-size, 40, 26, $maxWidthContainer, 320);
+  text-align: center;
+
+  color: $black;
+  font-weight: 700;
+}
