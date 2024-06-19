@@ -1,37 +1,10 @@
 import React from 'react';
-import gsap from 'gsap';
-import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
 import styles from './footer.module.scss';
 const Footer = ({ isTablet, isMobile }) => {
   const socialImages = ['img/icons/soc-01.svg', 'img/icons/soc-02.svg', 'img/icons/soc-03.svg'];
 
   const links = ['Главная', 'Каталог', 'Контакты'];
-
-  gsap.registerPlugin(ScrollTrigger);
-  React.useLayoutEffect(() => {
-    if (isMobile) {
-      const tl = gsap.timeline({
-        scrollTrigger: {
-          trigger: '.footer',
-          start: 'bottom 100%',
-          end: 'bottom 0%',
-        },
-      });
-      tl.from('.footer__left', {
-        opacity: 0,
-        y: 100,
-      });
-      tl.from('.footer__center', {
-        opacity: 0,
-        y: 100,
-      });
-      tl.from('.footer__right', {
-        opacity: 0,
-        y: 100,
-      });
-    }
-  }, [isMobile]);
 
   return (
     <footer className={`${styles.footer} footer`} id="contact">

@@ -98,7 +98,7 @@ const App = () => {
           <Step isSmallMobile={isSmallMobile} isFinishSize={isFinishSize} isMobile={isMobile} />
           <Question isMobile={isMobile} />
         </main>
-        <Footer isTablet={isTablet} isMobile={isMobile} />
+        <Footer isTablet={isTablet} />
       </Suspense>
     </>
   );
