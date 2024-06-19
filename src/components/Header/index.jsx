@@ -2,6 +2,7 @@ import React from 'react';
 import { useInView } from 'react-intersection-observer';
 import Popup from 'reactjs-popup';
 import { useSelector } from 'react-redux';
+import gsap from 'gsap';
 
 import styles from './header.module.scss';
 import Cart from '../Cart';
@@ -26,8 +27,9 @@ const Header = ({ isMobile }) => {
 
   const handleOpen = () => (document.body.style.overflow = 'hidden');
   const handleClose = () => (document.body.style.overflow = 'auto');
+
   return (
-    <header ref={ref} className={`${styles.header}`}>
+    <header ref={ref} className={`${styles.header} header`}>
       {showInput && (
         <div onClick={() => setShowInput(false)} className={`${styles.header__overlay}`}></div>
       )}
@@ -42,7 +44,7 @@ const Header = ({ isMobile }) => {
             <nav className="menu">
               <div className={`${styles.menu__list} ${open ? styles.open : ''}`}>
                 {!isMobile && (
-                  <a className={styles.logo} href="!#">
+                  <a className={`${styles.logo} logo`} href="!#">
                     <img src="img/logo.svg" alt="Логотип" />
                   </a>
                 )}

@@ -55,13 +55,18 @@
 }
 .title {
   margin-bottom: toRem(8);
-  background: linear-gradient(136.92deg, rgba(255, 255, 255, 0.91), rgb(103, 177, 242));
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
+  div {
+    background: linear-gradient(136.92deg, rgba(255, 255, 255, 0.91), rgb(103, 177, 242));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
   span {
     background: linear-gradient(224.12deg, rgb(255, 202, 16), rgb(255, 255, 255));
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
+  }
+
+  div {
   }
 
   span {

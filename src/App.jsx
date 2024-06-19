@@ -46,8 +46,8 @@ const App = () => {
     <>
       <Header isLaptop={isLaptop} isMobile={isMobile} />
       <main className="page">
-        <Hero isSmallMobile={isSmallMobile} />
-        <Advantages />
+        <Hero isSmallMobile={isSmallMobile} isMobile={isMobile} />
+        <Advantages isMobile={isMobile} />
         <From isPc={isPc} />
         <section className={`items rel`} id="catalog">
           <img className={`items__bg`} src="img/items-bg.svg" alt=" " />

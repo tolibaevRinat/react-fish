@@ -51,9 +51,10 @@
     gap: toRem(40);
     flex-direction: column;
   }
-
-  pointer-events: none;
-  transition: top 0.3s;
+  @media (max-width: toEm($mobile)) {
+    pointer-events: none;
+    transition: top 0.3s;
+  }
 
   &.open {
     top: 0%;
