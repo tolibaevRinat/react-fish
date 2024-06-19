@@ -77,13 +77,11 @@ const App = () => {
             <img className={`items__bg`} src="img/items-bg.svg" alt=" " />
             <div className={`container`}>
               <h2 className={`items__title title rel z-5`}>Наша продукция</h2>
-              {status === 'success' && (
-                <ul className={`items__list grid gap-20 rel z-5`}>
-                  {status === 'loading'
-                    ? skeleton
-                    : fishes.items.map((fish) => <Fishes key={fish.id} {...fish} />)}
-                </ul>
-              )}
+              <ul className={`items__list grid gap-20 rel z-5`}>
+                {status === 'loading'
+                  ? skeleton
+                  : fishes.items.map((fish) => <Fishes key={fish.id} {...fish} />)}
+              </ul>
               {status === 'error' && (
                 <section className={`empty rel z-5`}>
                   <h2>Ошибка при получении товаров &#128532;</h2>
