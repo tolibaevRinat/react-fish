@@ -11,6 +11,7 @@ import Favorite from '../Favorite';
 const Header = ({ isMobile }) => {
   const [showInput, setShowInput] = React.useState(false);
   const [open, setOpen] = React.useState(false);
+  const isMounted = React.useRef(false);
 
   const { items } = useSelector((state) => state.cart);
   const { favorites } = useSelector((state) => state.favorite);
@@ -27,6 +28,45 @@ const Header = ({ isMobile }) => {
 
   const handleOpen = () => (document.body.style.overflow = 'hidden');
   const handleClose = () => (document.body.style.overflow = 'auto');
+
+  React.useEffect(() => {
+    if (isMounted.current) {
+      const json = JSON.stringify(items);
+      localStorage.setItem('cart', json);
+    }
+    isMounted.current = true;
+  }, [items]);
+
+  React.useLayoutEffect(() => {
+    gsap.from('.logo', {
+      opacity: 0,
+      y: -100,
+      delay: 1.6,
+    });
+    gsap.from('.menu__link--01', {
+      opacity: 0,
+      y: -100,
+      delay: 1.8,
+    });
+    gsap.from('.menu__link--02', {
+      opacity: 0,
+      y: -100,
+      delay: 2,
+    });
+    gsap.from('.menu__link--03', {
+      opacity: 0,
+      y: -100,
+      delay: 2.2,
+    });
+    gsap.from('.header__like', {
+      scale: 0,
+      delay: 2.4,
+    });
+    gsap.from('.header__basket', {
+      scale: 0,
+      delay: 2.6,
+    });
+  }, []);
 
   return (
     <header ref={ref} className={`${styles.header} header`}>
@@ -51,7 +91,11 @@ const Header = ({ isMobile }) => {
                 <ul className={`flex al-c`}>
                   {menuLinks.map((menuLink, index) => (
                     <li key={index} className={styles.menu__link}>
-                      <a onClick={() => setOpen(false)} className="menu__link" href={menuLink.to}>
+                      <a
+                        onClick={() => setOpen(false)}
+                        className={`inline-block menu__link menu__link--0${index + 1}`}
+                        href={menuLink.to}
+                      >
                         {menuLink.title}
                       </a>
                     </li>
@@ -73,7 +117,7 @@ const Header = ({ isMobile }) => {
                 onClose={handleClose}
                 modal
                 trigger={
-                  <button className={`${styles.header__like} rel`} type="button">
+                  <button className={`${styles.header__like} header__like rel`} type="button">
                     <span className="flex f-cen">{favorites.length}</span>
                     <svg
                       width="32"
@@ -133,7 +177,7 @@ const Header = ({ isMobile }) => {
                 onOpen={handleOpen}
                 onClose={handleClose}
                 trigger={
-                  <button className={`${styles.basket} rel`}>
+                  <button className={`${styles.basket} header__basket rel`}>
                     <span className="flex f-cen">{items.length}</span>
                     <svg
                       width="34.367188"

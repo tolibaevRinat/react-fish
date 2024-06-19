@@ -1,6 +1,7 @@
 import React from 'react';
 import { useMediaQuery } from 'react-responsive';
 import { useSelector } from 'react-redux';
+import { useAutoAnimate } from '@formkit/auto-animate/react';
 
 import styles from './cart.module.scss';
 import CartItem from './CartItem';
@@ -8,6 +9,8 @@ import Pay from './Pay';
 
 const Cart = ({ close }) => {
   const items = useSelector((state) => state.cart.items);
+
+  console.log(items);
 
   const totalPrice = useSelector((state) =>
     state.cart.items.reduce((sum, obj) => {
@@ -28,12 +31,14 @@ const Cart = ({ close }) => {
   const isMobile = useMediaQuery({ maxWidth: 767.98 });
   const isSmallMobile = useMediaQuery({ maxWidth: 479.98 });
 
+  const [animationParent] = useAutoAnimate();
+
   return (
     <section className={`${styles.cart} flex`}>
       <div className={`${styles.main} flex f-d-col gap-20 grow`}>
         <h2 className={`${styles.title} `}>Ваша корзина</h2>
         {items.length > 0 ? (
-          <ul className={`${styles.list} flex f-d-col gap-20`}>
+          <ul ref={animationParent} className={`${styles.list} flex f-d-col gap-20`}>
             {items.map((item) => (
               <CartItem key={item.id} {...item} isMobile={isMobile} isSmallMobile={isSmallMobile} />
             ))}

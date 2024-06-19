@@ -1,11 +1,15 @@
 import React from 'react';
-import { useForm } from 'react-hook-form';
+import { useForm, Controller } from 'react-hook-form';
 import InputMask from 'react-input-mask';
+import { useSelector } from 'react-redux';
 
 import styles from './cart.module.scss';
 const Pap = ({ isLaptop, isMobile }) => {
+  const items = useSelector((state) => state.cart.items);
+
   const {
     register,
+    control,
     handleSubmit,
     formState: { errors },
     setValue,
@@ -13,14 +17,15 @@ const Pap = ({ isLaptop, isMobile }) => {
   } = useForm();
 
   const showResult = (data) => {
-    alert('Спасибо за заказ');
-    reset({ desc: '', name: '', tel: '+998' });
+    if (items.lenght > 0) {
+      alert('Спасибо за заказ');
+      reset({ desc: '', name: '', phone: '+998' });
+    } else {
+      alert('Вы веть ничего не заказали');
+    }
   };
 
-  React.useEffect(() => {
-    // Устанавливаем начальное значение для телефона
-    setValue('tel', '+998');
-  }, [setValue]);
+  setValue('phone', '+998');
 
   return (
     <form onSubmit={handleSubmit(showResult)} className={`${styles.pay}`}>
@@ -129,20 +134,29 @@ const Pap = ({ isLaptop, isMobile }) => {
         <div className={`${styles.check} flex f-d-col gap-10`}>
           <h3 className={`${styles.subtitle}`}>Мобильный телефон</h3>
 
-          <InputMask
-            className={`${styles.input}`}
-            mask="+998 (99) 999-99-99"
-            maskChar="_"
-            {...register('tel', {
-              required: 'Правильно заполните номер тедефона',
+          <Controller
+            name="phone"
+            control={control}
+            defaultValue="+998"
+            rules={{
+              required: 'Правильно заполните номер телефона',
               validate: (value) => {
                 const regex = /^\+998 \(\d{2}\) \d{3}-\d{2}-\d{2}$/;
-                return regex.test(value) || 'Правильно заполните номер тедефона';
+                return regex.test(value) || 'Правильно заполните номер телефона';
               },
-            })}
-          >
-            {(inputProps) => <input {...inputProps} type="tel" placeholder="Телефон" />}
-          </InputMask>
+            }}
+            render={({ field }) => (
+              <InputMask
+                {...field}
+                className={`${styles.input}`}
+                mask="+998 (99) 999-99-99"
+                maskChar="_"
+              >
+                {(inputProps) => <input {...inputProps} type="tel" placeholder="Телефон" />}
+              </InputMask>
+            )}
+          />
+
           {errors.tel && <div style={{ color: 'red' }}>{errors.tel.message}</div>}
         </div>
         {(isLaptop || isMobile) && (
@@ -179,7 +193,7 @@ const Pap = ({ isLaptop, isMobile }) => {
               <a className={`${styles.to_catalog} rel flex f-cen t-a-cen`} href="#!">
                 <img src="img/sun.svg" alt=" " />
                 <span className="rel z-5 f-700">
-                  Задать <br /> вопрос
+                  Сделать <br /> заказ
                 </span>
               </a>
             </button>
@@ -220,7 +234,7 @@ const Pap = ({ isLaptop, isMobile }) => {
             <a className={`${styles.to_catalog} rel flex f-cen t-a-cen`} href="#!">
               <img src="img/sun.svg" alt=" " />
               <span className="rel z-5 f-700">
-                Задать <br /> вопрос
+                Сделать <br /> заказ
               </span>
             </a>
           </button>

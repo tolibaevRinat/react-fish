@@ -34,29 +34,38 @@ const Advantages = ({ isMobile }) => {
       const tl = gsap.timeline({
         scrollTrigger: {
           trigger: '.advantages',
-          scrub: true,
-          start: 'top 90%',
+          start: 'top 80%',
           end: 'top 30%',
-          markers: {
-            startColor: 'white',
-            endColor: 'white',
-          },
         },
       });
       tl.from('.advantages__title', {
         opacity: 0,
         x: 200,
-      })
-        .from('.advantages__item-01', {
-          opacity: 0,
-          x: -200,
-          y: 200,
-        })
-        .from('.advantages__item-02', {
-          opacity: 0,
-          x: -100,
-          y: 400,
-        });
+      });
+      tl.from('.advantages__item-01', {
+        opacity: 0,
+        x: -200,
+        y: 200,
+        duration: 0.4,
+      });
+      tl.from('.advantages__item-02', {
+        opacity: 0,
+        x: -100,
+        y: 400,
+        duration: 0.4,
+      });
+      tl.from('.advantages__item-03', {
+        opacity: 0,
+        x: 100,
+        y: 400,
+        duration: 0.4,
+      });
+      tl.from('.advantages__item-04', {
+        opacity: 0,
+        x: 200,
+        y: 400,
+        duration: 0.4,
+      });
     }
   }, [isMobile]);
   return (

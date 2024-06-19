@@ -1,0 +1,10 @@
+@import '../../scss/modules/vars';
+@import '../../scss/modules/functions';
+@import '../../scss/modules/mixins';
+
+.root {
+  width: 100vw;
+  height: 100vh;
+
+  background-color: #fff;
+}

@@ -15,6 +15,7 @@ const Fishes = ({ id, title, description, share, sharePrice, price, image, maxWe
   );
 
   const isHave = cartItem ? cartItem.isHave : false;
+
   const isFavorite = favoriteItem ? favoriteItem.isFavorite : false;
 
   const addTo = (func) => {

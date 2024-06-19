@@ -1,16 +1,42 @@
 import React from 'react';
-import { useMediaQuery } from 'react-responsive';
+import gsap from 'gsap';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
 import styles from './footer.module.scss';
-const Footer = ({ isTablet }) => {
+const Footer = ({ isTablet, isMobile }) => {
   const socialImages = ['img/icons/soc-01.svg', 'img/icons/soc-02.svg', 'img/icons/soc-03.svg'];
 
   const links = ['Главная', 'Каталог', 'Контакты'];
 
+  gsap.registerPlugin(ScrollTrigger);
+  React.useLayoutEffect(() => {
+    if (isMobile) {
+      const tl = gsap.timeline({
+        scrollTrigger: {
+          trigger: '.footer',
+          start: 'bottom 100%',
+          end: 'bottom 0%',
+        },
+      });
+      tl.from('.footer__left', {
+        opacity: 0,
+        y: 100,
+      });
+      tl.from('.footer__center', {
+        opacity: 0,
+        y: 100,
+      });
+      tl.from('.footer__right', {
+        opacity: 0,
+        y: 100,
+      });
+    }
+  }, [isMobile]);
+
   return (
-    <footer className={`${styles.footer}`} id="contact">
+    <footer className={`${styles.footer} footer`} id="contact">
       <div className={`${styles.body} container flex al-c jus-b gap-20`}>
-        <div className={`${styles.left}`}>
+        <div className={`${styles.left} footer__left`}>
           <div className={`${styles.top} flex f-d-col gap-10`}>
             <a className={`${styles.logo} inline-block`} href="#!">
               <img src="img/logo.svg" alt="Логотип" />
@@ -35,7 +61,7 @@ const Footer = ({ isTablet }) => {
         </div>
 
         {isTablet && (
-          <div className={`${styles.center}`}>
+          <div className={`${styles.center} footer__center`}>
             <span className={`${styles.text} inline-block`}>Мы в социальных сетях!</span>
             <ul className={`${styles.list} flex al-c gap-10`}>
               {socialImages.map((img, index) => (
@@ -48,7 +74,7 @@ const Footer = ({ isTablet }) => {
             </ul>
           </div>
         )}
-        <div className={`${styles.right}`}>
+        <div className={`${styles.right} footer__right`}>
           {isTablet && (
             <ul className={`${styles.menu_list} flex al-c jus-b gap-20`}>
               {links.map((link, index) => (
@@ -59,7 +85,7 @@ const Footer = ({ isTablet }) => {
             </ul>
           )}
           {!isTablet && (
-            <div className={`${styles.center}`}>
+            <div className={`${styles.center} footer__center`}>
               <span className={`${styles.text} inline-block`}>Мы в социальных сетях!</span>
               <ul className={`${styles.list} flex al-c gap-10`}>
                 {socialImages.map((img, index) => (
