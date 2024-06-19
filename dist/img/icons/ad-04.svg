@@ -1,0 +1,46 @@
+<svg width="150.000000" height="150.000000" viewBox="0 0 150 150" fill="none" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+	<desc>
+			Created with Pixso.
+	</desc>
+	<defs>
+		<filter id="filter_7_1725_dd" x="0.000000" y="0.000000" width="150.000000" height="150.000000" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+			<feFlood flood-opacity="0" result="BackgroundImageFix"/>
+			<feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/>
+			<feOffset dx="-5" dy="5"/>
+			<feGaussianBlur stdDeviation="6.66667"/>
+			<feComposite in2="hardAlpha" operator="out" k2="-1" k3="1"/>
+			<feColorMatrix type="matrix" values="0 0 0 0 0.15294 0 0 0 0 0.2 0 0 0 0 0.31765 0 0 0 0.059 0"/>
+			<feBlend mode="normal" in2="BackgroundImageFix" result="effect_dropShadow_1"/>
+			<feBlend mode="normal" in="SourceGraphic" in2="effect_dropShadow_1" result="shape"/>
+		</filter>
+		<clipPath id="clip7_1725">
+			<rect id="Supply" rx="20.000000" width="110.000000" height="110.000000" transform="translate(25.000000 15.000000)" fill="white" fill-opacity="0"/>
+		</clipPath>
+	</defs>
+	<g filter="url(#filter_7_1725_dd)">
+		<rect id="Supply" rx="20.000000" width="110.000000" height="110.000000" transform="translate(25.000000 15.000000)" fill="#FFFFFF" fill-opacity="0"/>
+		<g clip-path="url(#clip7_1725)">
+			<circle id="Ellipse 21" cx="55.118896" cy="34.642822" r="19.642857" fill="#FFCA10" fill-opacity="1.000000"/>
+			<circle id="Ellipse 22" cx="117.976074" cy="93.571411" r="11.785713" fill="#FFCA10" fill-opacity="1.000000"/>
+			<mask id="mask7_1730" mask-type="alpha" maskUnits="userSpaceOnUse" x="35.475830" y="25.476196" width="89.047852" height="89.047974">
+				<path id="Vector" d="M35.47 25.47L124.52 25.47L124.52 114.52L35.47 114.52L35.47 25.47Z" fill="#000000" fill-opacity="1.000000" fill-rule="nonzero"/>
+				<path id="Vector" d="M124.52 25.47L35.47 25.47L35.47 114.52L124.52 114.52L124.52 25.47ZM122.02 112.02L37.97 112.02L37.97 27.97L122.02 27.97L122.02 112.02Z" fill="#000000" fill-opacity="1.000000" fill-rule="evenodd"/>
+			</mask>
+			<g mask="url(#mask7_1730)">
+				<path id="Vector" d="M108.68 64.06L103.93 64.06C103.34 61.67 102.39 59.38 101.12 57.27L104.48 53.91L96.08 45.51L92.72 48.87C90.61 47.6 88.32 46.65 85.93 46.06L85.93 41.31L74.06 41.31L74.06 46.06C71.67 46.65 69.38 47.6 67.26 48.87L63.91 45.51L55.51 53.91L58.87 57.27C57.6 59.38 56.65 61.67 56.06 64.06L51.31 64.06L51.31 75.93L56.06 75.93C56.65 78.32 57.6 80.61 58.87 82.73L55.51 86.08L63.91 94.48L67.26 91.12C69.38 92.39 71.67 93.34 74.06 93.93L74.06 98.68L85.93 98.68L85.93 93.93C88.32 93.34 90.61 92.39 92.72 91.12L96.08 94.48L104.48 86.08L101.12 82.73C102.39 80.61 103.34 78.32 103.93 75.93L108.68 75.93L108.68 64.06Z" stroke="#F3F6FA" stroke-opacity="1.000000" stroke-width="2.500000" stroke-linejoin="round"/>
+				<path id="Vector" d="M93.13 62.41L79.99 54.82L66.85 62.41L66.85 77.58L79.99 85.17L93.13 77.58L93.13 62.41Z" stroke="#F3F6FA" stroke-opacity="1.000000" stroke-width="2.500000" stroke-linejoin="round"/>
+				<path id="Vector" d="M67.29 62.66L80 70L92.84 62.58" stroke="#F3F6FA" stroke-opacity="1.000000" stroke-width="2.500000" stroke-linejoin="round" stroke-linecap="round"/>
+				<path id="Vector" d="M80 70L80 84.33" stroke="#F3F6FA" stroke-opacity="1.000000" stroke-width="2.500000" stroke-linejoin="round" stroke-linecap="round"/>
+				<path id="Vector" d="M100.63 32.83C94.52 29.42 87.48 27.48 80 27.48" stroke="#F3F6FA" stroke-opacity="1.000000" stroke-width="2.500000" stroke-linejoin="round" stroke-linecap="round"/>
+				<path id="Vector" d="M121.28 59.91C119.71 53.51 116.7 47.68 112.62 42.78" stroke="#F3F6FA" stroke-opacity="1.000000" stroke-width="2.500000" stroke-linejoin="round" stroke-linecap="round"/>
+				<path id="Vector" d="M116.32 56.7L121.31 59.97L122.78 54.18" stroke="#F3F6FA" stroke-opacity="1.000000" stroke-width="2.500000" stroke-linejoin="round" stroke-linecap="round"/>
+				<path id="Vector" d="M38.71 80.08C43.28 98.7 60.03 112.51 80 112.51" stroke="#F3F6FA" stroke-opacity="1.000000" stroke-width="2.500000" stroke-linejoin="round" stroke-linecap="round"/>
+				<path id="Vector" d="M43.67 83.29L38.68 80.02L37.21 85.81" stroke="#F3F6FA" stroke-opacity="1.000000" stroke-width="2.500000" stroke-linejoin="round" stroke-linecap="round"/>
+				<path id="Vector" d="M90.08 111.28C108.7 106.71 122.51 89.96 122.51 70" stroke="#F3F6FA" stroke-opacity="1.000000" stroke-width="2.500000" stroke-linejoin="round" stroke-linecap="round"/>
+				<path id="Vector" d="M93.29 106.32L90.02 111.31L95.81 112.78" stroke="#F3F6FA" stroke-opacity="1.000000" stroke-width="2.500000" stroke-linejoin="round" stroke-linecap="round"/>
+				<path id="Vector" d="M69.91 28.71C51.29 33.28 37.48 50.03 37.48 70" stroke="#F3F6FA" stroke-opacity="1.000000" stroke-width="2.500000" stroke-linejoin="round" stroke-linecap="round"/>
+				<path id="Vector" d="M66.7 33.67L69.97 28.68L64.18 27.21" stroke="#F3F6FA" stroke-opacity="1.000000" stroke-width="2.500000" stroke-linejoin="round" stroke-linecap="round"/>
+			</g>
+		</g>
+	</g>
+</svg>
