@@ -137,7 +137,7 @@ const CartItem = ({
                   <b>{weight} кг</b>
                 </div>
                 <button
-                  onClick={onClickMinus}
+                  onClick={onClickPlus}
                   disabled={weight > maxWeight - 0.5}
                   className={`${styles.btn}`}
                 >

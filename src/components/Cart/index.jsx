@@ -10,8 +10,6 @@ import Pay from './Pay';
 const Cart = ({ close }) => {
   const items = useSelector((state) => state.cart.items);
 
-  console.log(items);
-
   const totalPrice = useSelector((state) =>
     state.cart.items.reduce((sum, obj) => {
       let all = 0;
